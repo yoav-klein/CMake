@@ -1,0 +1,25 @@
+
+Math example
+------------
+
+This example demonstrate a project that has 2 targets:
+
+libmath: A library with math functions.
+calculator: An execuatable that uses the libmath library.
+
+Each of those has a CMakeLists.txt of its own, and there's a top-level CMakeLists.txt
+which add_subdirectory's them both
+
+
+PUBLIC | PRIVATE | INTERFACE
+---------------------------
+This example can also demonstarte the use of these modifiers 
+in the context of the target_include_directories() of the libmath:
+Notice that in order for the calculator project to compile, you have to 
+set the target_include_directories() of libmath to PUBLIC - that way 
+the directories you specify are also included in the INCLUDE_DIRECTORIES
+of the calculator target. 
+If you try setting it to PRIVATE - you'll get a compiler error.
+
+The interesting thing is that setting it to INTERFACE also works, although it 
+only populates the INTERFACE_INCLUDE_DIRECTORIES of libmath.
