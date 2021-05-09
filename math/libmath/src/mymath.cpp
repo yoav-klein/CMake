@@ -1,5 +1,5 @@
 
-#include "math.h"
+#include "mymath.h"
 
 int add(int a, int b)
 {
