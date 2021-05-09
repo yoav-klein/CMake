@@ -4,7 +4,7 @@ Math example
 
 This example demonstrate a project that has 2 targets:
 
-libmath: A library with math functions.
+libmymath: A library with math functions.
 calculator: An execuatable that uses the libmath library.
 
 Each of those has a CMakeLists.txt of its own, and there's a top-level CMakeLists.txt
@@ -14,12 +14,27 @@ which add_subdirectory's them both
 PUBLIC | PRIVATE | INTERFACE
 ---------------------------
 This example can also demonstarte the use of these modifiers 
-in the context of the target_include_directories() of the libmath:
-Notice that in order for the calculator project to compile, you have to 
-set the target_include_directories() of libmath to PUBLIC - that way 
-the directories you specify are also included in the INCLUDE_DIRECTORIES
-of the calculator target. 
-If you try setting it to PRIVATE - you'll get a compiler error.
+in the context of the target_include_directories() of the libmymath in the following manner:
 
-The interesting thing is that setting it to INTERFACE also works, although it 
-only populates the INTERFACE_INCLUDE_DIRECTORIES of libmath.
+If we set the target_include_directories() of libmymath to PUBLIC - it is 
+	added to the CXX_INCLUDES variable in the `flags.make` file of both the calculator
+	and libmymath, is set to whatever directories we specified in the target_include_directories() 
+	of the libmymath.
+	
+	In libmymath target, it is also added to the INCLUDE_DIRECTORIES and INTERFACE_INCLUDE_DIRECTORIES
+
+
+If we set the target_include_directories() of libmymath to INTERFACE - it is 
+	added to the CXX_INCLUDES variable of `flags.make` file of ONLY calculator.
+	In libmymath - it is added only to the INTERFACE_INCLUDE_DIRECTORIES
+	
+	In this case, compilation of libmymath fails because it doesn't find the header.
+
+If we set the target_include_directories() of libmymath to PRIVATE - it is added 
+	to the CXX_INCLUDES variable of `flags.make` file of ONLY libmymath.
+	In libmymath - it is added to only the INCLUDE_DIRECTORIES property.
+	
+	In this case, the compilation of calculator fails because it doesn't find the header.
+ 
+
+

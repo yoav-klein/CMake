@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 
 add_library(MyMath src/mymath.cpp)
 
-target_include_directories(MyMath INTERFACE include)
+target_include_directories(MyMath PUBLIC include)
 
 get_target_property(MYMATH_INC_DIR MyMath INCLUDE_DIRECTORIES)
 get_target_property(MYMATH_INC_DIR_INTERFACE MyMath INTERFACE_INCLUDE_DIRECTORIES)
