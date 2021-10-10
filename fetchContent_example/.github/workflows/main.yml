@@ -1,0 +1,17 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build-ubuntu:
+
+    runs-on: ubuntu-18.04
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure
+      run: mkdir build && cd build && cmake ..
+    - name: build
+      run: cmake --build build
+    - name: run
+      run: ./build/fetchContent_example
