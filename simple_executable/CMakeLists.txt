@@ -6,5 +6,5 @@ project(FOO)
 # Notice that project name here is FOO, even if there's a higher level call to project with a different name
 message(${PROJECT_NAME})
 
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../artifacts)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 add_executable(foo main.cpp)
