@@ -1,8 +1,8 @@
 
 
-project(FooPackage)
 
 cmake_minimum_required(VERSION 3.15)
+project(FooPackage VERSION 1.2)
 
 add_library(Foo foo.cpp)
 target_include_directories(Foo PUBLIC ${CMAKE_BUILD_DIR})
@@ -26,7 +26,7 @@ install(EXPORT FooTargets
 # this creates a FooConfigVersion.cmake file
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file("FooConfigVersion.cmake"
-	VERSION 1.0
+	VERSION ${FooPackage_VERSION}
 	COMPATIBILITY SameMajorVersion
 )
 
