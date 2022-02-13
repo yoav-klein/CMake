@@ -18,6 +18,8 @@ install(TARGETS MyMath EXPORT MyMathExports
 # this will create the "import file"
 install(EXPORT 
 	MyMathExports
+	# NAMESPACE prepends the <namespace> to all the targets
+	# imported with this export set
 	NAMESPACE MyMath::
 	DESTINATION /home/yoav/test_install
 	# setting the name of the import file

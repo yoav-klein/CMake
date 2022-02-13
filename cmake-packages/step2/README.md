@@ -15,3 +15,6 @@ target_link_libraries(MyCalculator MyMath::MyMath)
 ```
 This `MyMath::MyMath` cannot be a file name, so it must be a name of a target, and if such target doesn't exist, CMake
 will generate an error during generation.
+
+
+We also have the `using-mymath` directory here, which simulates a consumer project, which consumes the MyMath library.
