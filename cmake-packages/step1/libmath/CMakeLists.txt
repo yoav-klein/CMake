@@ -9,7 +9,7 @@ add_library(MyMath src/mymath.cpp)
 #
 #set(CMAKE_INSTALL_PREFIX ${CURRENT_LIST_BINARY_DIR}/test_install)
 
-target_include_directories(MyMath PUBLIC include)
+target_include_directories(MyMath PRIVATE include)
 
 ## Installs the outputs of the target MyMath to those locations
 install(TARGETS MyMath
