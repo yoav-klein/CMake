@@ -16,7 +16,6 @@ install(TARGETS MyMath
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 	RUNTIME DESTINATION bin
-	INCLUDES DESTINATION include
 )
 
 # Installs the mymath.h file to `include`

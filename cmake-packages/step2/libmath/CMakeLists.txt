@@ -4,24 +4,23 @@ cmake_minimum_required(VERSION 3.15)
 
 add_library(MyMath src/mymath.cpp)
 
-#
-# You can set the CMAKE_INSTALL_PREFIX here to set the root of all the installed files
-#
-#set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BIN_DIR}/test_install)
-
 target_include_directories(MyMath PRIVATE include)
 
 ## Installs the outputs of the target MyMath to those locations
+# using the EXPORT option associates the given targets (in this case MyMath) with the 
+# export set MyMathExports
 install(TARGETS MyMath EXPORT MyMathExports
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 	RUNTIME DESTINATION bin
-	INCLUDES DESTINATION include
 )
 
+# this will create the "import file"
 install(EXPORT 
 	MyMathExports
+	NAMESPACE MyMath::
 	DESTINATION /home/yoav/test_install
+	# setting the name of the import file
 	FILE MyMathTargets.cmake
 )
 
