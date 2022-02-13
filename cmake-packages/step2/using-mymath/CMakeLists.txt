@@ -2,7 +2,7 @@
 project(UsingMyMath)
 cmake_minimum_required(VERSION 3.15)
 
-include(/home/yoav/test_install/MyMathTargets.cmake)
+include(${CMAKE_SOURCE_DIR/../targets/}MyMathTargets.cmake)
 
 add_executable(test test.cpp)
 

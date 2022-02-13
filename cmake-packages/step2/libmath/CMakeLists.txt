@@ -13,6 +13,9 @@ install(TARGETS MyMath EXPORT MyMathExports
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 	RUNTIME DESTINATION bin
+	# this will populate the INTERFACE_INCLUDE_DIRECTORIES
+	# of the IMPORTED target created in the import file
+	INCLUDES DIRECTORIES include/mymath
 )
 
 # this will create the "import file"
@@ -21,7 +24,7 @@ install(EXPORT
 	# NAMESPACE prepends the <namespace> to all the targets
 	# imported with this export set
 	NAMESPACE MyMath::
-	DESTINATION /home/yoav/test_install
+	DESTINATION ${CMAKE_SOURCE_DIR}/../targets
 	# setting the name of the import file
 	FILE MyMathTargets.cmake
 )
@@ -29,5 +32,5 @@ install(EXPORT
 # Installs the mymath.h file to `include`
 install(FILES
 	include/mymath.h
-	DESTINATION include
+	DESTINATION include/mymath
 )
