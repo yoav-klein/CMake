@@ -4,35 +4,29 @@ cmake_minimum_required(VERSION 3.15)
 
 set(MyMath_VERSION 1.2)
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	set(CMAKE_CXX_FLAGS "-DDEBUG")
+endif()
+
+
 add_library(MyMath src/mymath.cpp)
 target_include_directories(MyMath PRIVATE include)
 
 ## Installs the outputs of the target MyMath to those locations
 # using the EXPORT option associates the given targets (in this case MyMath) with the 
 # export set MyMathExports
-install(TARGETS MyMath CONFIGURATIONS Debug  
+install(TARGETS MyMath
 	EXPORT MyMathExports
-	LIBRARY DESTINATION lib/Debug
-	ARCHIVE DESTINATION lib/Debug
-	RUNTIME DESTINATION bin/Debug
+	LIBRARY DESTINATION lib/$<CONFIG>
+	ARCHIVE DESTINATION lib/$<CONFIG>
+	RUNTIME DESTINATION bin
 	# this will populate the INTERFACE_INCLUDE_DIRECTORIES
 	# of the IMPORTED target created in the import file
-	INCLUDES DIRECTORIES include/mymath
-	#CONFIGURATIONS Release
-	#ARCHIVE DESTINATION lib/Release
-)
-
-install(TARGETS MyMath CONFIGURATIONS Release
-	EXPORT MyMathExports 
-	LIBRARY DESTINATION lib/Release
-	ARCHIVE DESTINATION lib/Release
-	RUNTIME DESTINATION bin/Release
 	INCLUDES DIRECTORIES include/mymath
 )
 
 # this will create the "import file"
-install(EXPORT MyMathExports CONFIGURATIONS Debug
-	
+install(EXPORT MyMathExports
 	# NAMESPACE prepends the <namespace> to all the targets
 	# imported with this export set
 	NAMESPACE MyMath::
