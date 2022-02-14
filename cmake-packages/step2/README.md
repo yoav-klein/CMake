@@ -1,5 +1,5 @@
 
-# Step 2
+# Step 2 - Generating an Import file
 ---
 In this step, we use `install(EXPORT)` in order to create an _import file_.
 

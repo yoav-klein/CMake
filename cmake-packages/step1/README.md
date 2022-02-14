@@ -1,5 +1,5 @@
 
-# Step 1
+# Step 1 - Installing a target
 ---
 
 In this step, we use `install` command to install our library.
