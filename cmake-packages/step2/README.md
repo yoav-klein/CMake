@@ -28,3 +28,15 @@ We also have the `using-mymath` directory here, which simulates a consumer proje
 In this example, we set the INCLUDES DIRECTORIES option of the install(TARGETS) command. This means that the given value (`include/mymath`) will be added to the INTERFACE_INCLUDE_DIRECTORIES of the resulting target. If you take a look at the resulting file you'll see it.
 
 The header file is then copied to the same directory, so everythin works well.
+
+## Usage
+
+To run this demo, first build and install the `MyMath` library, as in step 1.
+Then:
+
+```
+$ cd using-mymath; mkdir build; cd build
+$ cmake ..
+$ cmake --build .
+$ ./test
+```

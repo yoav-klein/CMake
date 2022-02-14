@@ -10,18 +10,20 @@ target_include_directories(MyMath PRIVATE include)
 ## Installs the outputs of the target MyMath to those locations
 # using the EXPORT option associates the given targets (in this case MyMath) with the 
 # export set MyMathExports
-install(TARGETS MyMath EXPORT MyMathExports
-	CONFIGURATIONS Debug
+install(TARGETS MyMath CONFIGURATIONS Debug  
+	EXPORT MyMathExports
 	LIBRARY DESTINATION lib/Debug
 	ARCHIVE DESTINATION lib/Debug
 	RUNTIME DESTINATION bin/Debug
 	# this will populate the INTERFACE_INCLUDE_DIRECTORIES
 	# of the IMPORTED target created in the import file
 	INCLUDES DIRECTORIES include/mymath
+	#CONFIGURATIONS Release
+	#ARCHIVE DESTINATION lib/Release
 )
 
-install(TARGETS MyMath EXPORT MyMathExports 
-	CONFIGURATIONS Release
+install(TARGETS MyMath CONFIGURATIONS Release
+	EXPORT MyMathExports 
 	LIBRARY DESTINATION lib/Release
 	ARCHIVE DESTINATION lib/Release
 	RUNTIME DESTINATION bin/Release
@@ -29,8 +31,8 @@ install(TARGETS MyMath EXPORT MyMathExports
 )
 
 # this will create the "import file"
-install(EXPORT 
-	MyMathExports
+install(EXPORT MyMathExports CONFIGURATIONS Debug
+	
 	# NAMESPACE prepends the <namespace> to all the targets
 	# imported with this export set
 	NAMESPACE MyMath::
