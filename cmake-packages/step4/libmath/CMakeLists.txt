@@ -4,10 +4,6 @@ cmake_minimum_required(VERSION 3.15)
 
 set(MyMath_VERSION 1.2)
 
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-	set(CMAKE_CXX_FLAGS "-DDEBUG")
-endif()
-
 
 add_library(MyMath src/mymath.cpp)
 target_include_directories(MyMath PRIVATE include)

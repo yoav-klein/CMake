@@ -4,7 +4,7 @@
 
 int add(int a, int b)
 {	
-	#ifdef DEBUG
+	#ifndef NDEBUG
 	std::cout << "DEBUG" << std::endl;
 	#endif
 	return a + b;
